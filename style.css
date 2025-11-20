@@ -1,0 +1,142 @@
+/* style.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    background-color: #fce4ec;
+    color: #4a4a4a;
+    padding-top: 50px;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+header h1 {
+    color: #e91e63;
+    margin-bottom: 40px;
+}
+
+.character-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+    
+    width: 300px;
+    height: auto;  
+    margin: 30px auto;
+    position: relative;
+}
+
+#main-character {
+    width: 250px;   
+    height: 250px;
+    object-fit: contain; 
+    position: relative; 
+    
+    transition: transform 3s ease-out; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    background-color: #ffffff; 
+    z-index: 1;
+}
+
+.result-container {
+    margin-top: 25px; 
+    padding: 10px 20px;
+    background-color: #ffffff; 
+    border-radius: 5px;
+    border: 2px solid #e91e63;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 2;
+}
+
+#current-text {
+    font-size: 2.5em; 
+    font-weight: bold;
+    color: #d81b60; 
+    transition: transform 0.2s ease-in-out;
+}
+
+#spin-button {
+    padding: 18px 35px;
+    font-size: 1.6em;
+    cursor: pointer;
+    background-color: #f06292;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin-top: 30px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#spin-button:hover:not(:disabled) {
+    background-color: #e91e63;
+    transform: translateY(-2px);
+}
+
+#spin-button:disabled {
+    background-color: #bdbdbd;
+    cursor: not-allowed;
+}
+
+#background-music, #spin-sound {
+    display: none;
+}
+
+#heart-explosion-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    width: 1px;
+    height: 1px; 
+    
+    pointer-events: none; 
+    z-index: 0;
+    overflow: visible; 
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #ff69b4; 
+    transform: rotate(-45deg);
+    opacity: 0;
+    animation: explodeHeart 1.5s forwards ease-out; 
+    border-radius: 50% 50% 0 50%; 
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #ff69b4;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    top: 0;
+    left: 10px;
+}
+
+@keyframes explodeHeart {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(0);
+    }
+    10% {
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--x), var(--y)) scale(0.5); 
+    }
+}
