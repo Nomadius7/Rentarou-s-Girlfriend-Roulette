@@ -23,7 +23,7 @@ function startBackgroundMusic() {
 
 document.addEventListener('DOMContentLoaded', () => {
     characterDisplay.src = CHARACTER_LIST[0] || '';
-    textDisplay.textContent = "Click to Start!";
+    textDisplay.textContent = "Its time to choose!";
     
     document.addEventListener('click', startBackgroundMusic, { once: true });
 });
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function startSpin() {
     spinButton.disabled = true;
-    textDisplay.textContent = "SPINNING...";
+    textDisplay.textContent = "CHOOSING...";
     
     spinSound.currentTime = 0;
     spinSound.volume = 0.7;
@@ -93,5 +93,6 @@ function createHeartExplosion() {
         });
     }
 }
+
 
 spinButton.addEventListener('click', startSpin);
